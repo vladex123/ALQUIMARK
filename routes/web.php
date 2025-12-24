@@ -57,8 +57,7 @@ Route::get('/category/sports', [CategoryController::class, 'sports'])->name('cat
 Route::get('/benefit/{slug}', [BenefitController::class, 'show'])->name('benefit.show');
 
 // Rutas de registro
-Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('register', [RegisterController::class, 'register']);
+
 Route::get('register/google', [App\Http\Controllers\Auth\GoogleController::class, 'redirectToGoogle'])->name('register.google');
 Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index')->middleware('auth');
 // Rutas de restablecimiento de contraseña
@@ -66,9 +65,9 @@ Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestF
 Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
