@@ -24,7 +24,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 // Rutas de autenticación
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+//Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
